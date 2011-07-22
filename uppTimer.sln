@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uppTimer", "uppTimer\uppTimer.csproj", "{80F47540-4087-4E97-9B3A-B52EC8151390}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uppTimer.Tests", "uppTimer.Tests\uppTimer.Tests.csproj", "{AEC2617C-01E8-4DB0-B18B-AA8F0FDA8E01}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6C22F20C-5802-4FE8-8679-1528F48C6093}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+		uppTimer.vsmdi = uppTimer.vsmdi
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = uppTimer.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80F47540-4087-4E97-9B3A-B52EC8151390}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{80F47540-4087-4E97-9B3A-B52EC8151390}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{80F47540-4087-4E97-9B3A-B52EC8151390}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{80F47540-4087-4E97-9B3A-B52EC8151390}.Debug|x86.ActiveCfg = Debug|x86
+		{80F47540-4087-4E97-9B3A-B52EC8151390}.Debug|x86.Build.0 = Debug|x86
+		{80F47540-4087-4E97-9B3A-B52EC8151390}.Release|Any CPU.ActiveCfg = Release|x86
+		{80F47540-4087-4E97-9B3A-B52EC8151390}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{80F47540-4087-4E97-9B3A-B52EC8151390}.Release|Mixed Platforms.Build.0 = Release|x86
+		{80F47540-4087-4E97-9B3A-B52EC8151390}.Release|x86.ActiveCfg = Release|x86
+		{80F47540-4087-4E97-9B3A-B52EC8151390}.Release|x86.Build.0 = Release|x86
+		{AEC2617C-01E8-4DB0-B18B-AA8F0FDA8E01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEC2617C-01E8-4DB0-B18B-AA8F0FDA8E01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEC2617C-01E8-4DB0-B18B-AA8F0FDA8E01}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{AEC2617C-01E8-4DB0-B18B-AA8F0FDA8E01}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{AEC2617C-01E8-4DB0-B18B-AA8F0FDA8E01}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AEC2617C-01E8-4DB0-B18B-AA8F0FDA8E01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEC2617C-01E8-4DB0-B18B-AA8F0FDA8E01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEC2617C-01E8-4DB0-B18B-AA8F0FDA8E01}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{AEC2617C-01E8-4DB0-B18B-AA8F0FDA8E01}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{AEC2617C-01E8-4DB0-B18B-AA8F0FDA8E01}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
