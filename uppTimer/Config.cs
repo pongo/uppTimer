@@ -6,7 +6,7 @@
     using System.Text;
     using System.Text.RegularExpressions;
 
-    internal class Config
+    public class Config
     {
         private readonly string configName;
 
@@ -63,7 +63,7 @@
         {
             var items = new List<string>();
 
-            var hours = string.Format("{0}h", timeSpan.Hours);
+            var hours = string.Format("{0}h", (int)Math.Floor(timeSpan.TotalHours));
             var minutes = string.Format("{0}m", timeSpan.Minutes);
             var seconds = string.Format("{0}s", timeSpan.Seconds);
 

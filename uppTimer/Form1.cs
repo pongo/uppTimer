@@ -16,9 +16,7 @@
         {
             this.InitializeComponent();
 
-            this.config.Load();
-            this.Text = string.Format("{0}", this.config.TimerName);
-            this.labelTotalTime.Text = Config.GetTimeString(this.config.TotalTime);
+            this.LoadConfig();
             this.labelTotalTime.Visible = true;
 
             this.labelTime.Text = string.Empty;
@@ -33,6 +31,13 @@
             Stopped = 0,
             Started = 1, 
             Paused = 2
+        }
+
+        private void LoadConfig()
+        {
+            this.config.Load();
+            this.Text = string.Format("{0}", this.config.TimerName);
+            this.labelTotalTime.Text = Config.GetTimeString(this.config.TotalTime);
         }
 
         private void Tick(object sender, EventArgs e)
@@ -98,6 +103,20 @@
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.StopTimer();
+        }
+
+        private void buttonEditConfig_Click(object sender, EventArgs e)
+        {
+            var editConfigForm = new EditConfigForm { Config = this.config };
+            editConfigForm.ShowDialog(this);
+            if (editConfigForm.Save)
+            {
+                this.config.TimerName = editConfigForm.TimerName;
+                this.config.TotalTime = TimeSpan.FromHours(editConfigForm.Hours)
+                                        + TimeSpan.FromMinutes(editConfigForm.Minutes);
+                this.config.Save();
+                this.LoadConfig();
+            }
         }
     }
 }

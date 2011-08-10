@@ -34,6 +34,7 @@
             this.labelTotalTime = new System.Windows.Forms.Label();
             this.buttonStart = new System.Windows.Forms.Button();
             this.buttonStop = new System.Windows.Forms.Button();
+            this.buttonEditConfig = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -99,11 +100,23 @@
             this.buttonStop.UseVisualStyleBackColor = true;
             this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
             // 
+            // buttonEditConfig
+            // 
+            this.buttonEditConfig.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonEditConfig.Location = new System.Drawing.Point(371, 77);
+            this.buttonEditConfig.Name = "buttonEditConfig";
+            this.buttonEditConfig.Size = new System.Drawing.Size(75, 23);
+            this.buttonEditConfig.TabIndex = 4;
+            this.buttonEditConfig.Text = "Edit config";
+            this.buttonEditConfig.UseVisualStyleBackColor = true;
+            this.buttonEditConfig.Click += new System.EventHandler(this.buttonEditConfig_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(460, 113);
+            this.Controls.Add(this.buttonEditConfig);
             this.Controls.Add(this.buttonStop);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -130,6 +143,7 @@
         private System.Windows.Forms.Label labelTotalTime;
         private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.Button buttonStop;
+        private System.Windows.Forms.Button buttonEditConfig;
     }
 }
 
