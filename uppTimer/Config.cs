@@ -8,12 +8,16 @@
 
     internal class Config
     {
-        private const string ConfigName = @"uppTimer.cfg";
+        private readonly string configName;
+
+        public Config()
+        {
+            this.configName = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName + ".cfg";
+        }
 
         public string TimerName { get; set; }
-
         public TimeSpan TotalTime { get; set; }
-
+        
         public static string GetTimeString(TimeSpan timeSpan, bool withSeconds = false)
         {
             return string.Format(
@@ -22,18 +26,18 @@
 
         public void Load()
         {
-            if (!File.Exists(ConfigName))
+            if (!File.Exists(this.configName))
             {
-                File.WriteAllText(ConfigName, @"Timer = 0m", Encoding.UTF8);
+                File.WriteAllText(this.configName, @"Timer = 0m", Encoding.UTF8);
             }
 
-            this.ParseConfig(File.ReadAllText(ConfigName));
+            this.ParseConfig(File.ReadAllText(this.configName));
         }
 
         public void Save()
         {
             File.WriteAllText(
-                ConfigName, string.Format("{0} = {1}", this.TimerName, GetTimeStringOld(this.TotalTime)), Encoding.UTF8);
+                this.configName, string.Format("{0} = {1}", this.TimerName, GetTimeStringOld(this.TotalTime)), Encoding.UTF8);
         }
 
         internal void ParseConfig(string config)
