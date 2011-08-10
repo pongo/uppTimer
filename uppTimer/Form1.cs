@@ -98,6 +98,7 @@
             this.buttonStart.Text = @"Start";
             this.timerState = TimerState.Stopped;
             this.buttonStop.Enabled = false;
+            this.buttonStart.Focus();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
