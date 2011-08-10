@@ -47,7 +47,7 @@
             this.groupBox1.Size = new System.Drawing.Size(214, 59);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Текущая сессия";
+            this.groupBox1.Text = "Current session";
             // 
             // labelTime
             // 
@@ -67,7 +67,7 @@
             this.groupBox2.Size = new System.Drawing.Size(214, 59);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Всего";
+            this.groupBox2.Text = "Total";
             // 
             // labelTotalTime
             // 
@@ -85,7 +85,7 @@
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(56, 23);
             this.buttonStart.TabIndex = 1;
-            this.buttonStart.Text = "Старт";
+            this.buttonStart.Text = "Start";
             this.buttonStart.UseVisualStyleBackColor = true;
             this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
             // 
@@ -96,7 +96,7 @@
             this.buttonStop.Name = "buttonStop";
             this.buttonStop.Size = new System.Drawing.Size(56, 23);
             this.buttonStop.TabIndex = 3;
-            this.buttonStop.Text = "Стоп";
+            this.buttonStop.Text = "Stop";
             this.buttonStop.UseVisualStyleBackColor = true;
             this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
             // 
@@ -125,7 +125,7 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "УПП таймер";
+            this.Text = "Upp timer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
