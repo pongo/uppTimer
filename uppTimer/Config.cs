@@ -12,7 +12,9 @@
 
         public Config()
         {
-            this.configName = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName + ".cfg";
+            this.configName =
+                Path.GetFileNameWithoutExtension(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName)
+                + ".cfg";
         }
 
         public string TimerName { get; set; }
