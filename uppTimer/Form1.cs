@@ -1,80 +1,72 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
-namespace uppTimer
+﻿namespace uppTimer
 {
-    public partial class Form1 : Form
-    {
-        private readonly Config _config = new Config();
-        //private readonly Stopwatch _stopwatch = new Stopwatch();
+    using System;
+    using System.Windows.Forms;
 
-        private readonly Timer _timer = new Timer();
-        private DateTime _startTime;
-        private TimeSpan _elapsedTime;
-        private int _seconds;
-        
+    public sealed partial class Form1 : Form
+    {
+        private readonly Config config = new Config();
+
+        private readonly Timer timer = new Timer();
+        private TimeSpan elapsedTime;
+        private int seconds;
+        private DateTime startTime;
+
         public Form1()
         {
-            InitializeComponent();
+            this.InitializeComponent();
 
-            _config.Load();
-            base.Text = string.Format("{0}", _config.TimerName);
-            labelTotalTime.Text = Config.GetTimeString(_config.TotalTime);
-            labelTotalTime.Visible = true;
+            this.config.Load();
+            this.Text = string.Format("{0}", this.config.TimerName);
+            this.labelTotalTime.Text = Config.GetTimeString(this.config.TotalTime);
+            this.labelTotalTime.Visible = true;
 
-            labelTime.Text = string.Empty;
-            labelTime.Visible = true;
+            this.labelTime.Text = string.Empty;
+            this.labelTime.Visible = true;
 
-            _timer.Interval = 1000;
-            _timer.Tick += Tick;
+            this.timer.Interval = 1000;
+            this.timer.Tick += this.Tick;
         }
 
         private void Tick(object sender, EventArgs e)
         {
-            _elapsedTime = DateTime.Now - _startTime;
+            this.elapsedTime = DateTime.Now - this.startTime;
 
-            _seconds++;
-            if (_seconds >= 60)
+            this.seconds++;
+            if (this.seconds >= 60)
             {
-                _config.TotalTime += TimeSpan.FromSeconds(60);
-                _config.Save();
-                _seconds = 0;
+                this.config.TotalTime += TimeSpan.FromSeconds(60);
+                this.config.Save();
+                this.seconds = 0;
             }
 
-            labelTime.Text = Config.GetTimeString(_elapsedTime, true);
-            labelTotalTime.Text = Config.GetTimeString(_config.TotalTime);
+            this.labelTime.Text = Config.GetTimeString(this.elapsedTime, true);
+            this.labelTotalTime.Text = Config.GetTimeString(this.config.TotalTime);
         }
-        
+
         private void buttonStart_Click(object sender, EventArgs e)
         {
-            _startTime = DateTime.Now;
-            _timer.Start();
-            labelTime.Text = Config.GetTimeString(TimeSpan.FromSeconds(0));
+            this.startTime = DateTime.Now;
+            this.timer.Start();
+            this.labelTime.Text = Config.GetTimeString(TimeSpan.FromSeconds(0));
 
-            buttonStart.Enabled = false;
-            buttonStop.Enabled = true;
+            this.buttonStart.Enabled = false;
+            this.buttonStop.Enabled = true;
         }
 
         private void buttonStop_Click(object sender, EventArgs e)
         {
-            _timer.Stop();
-            _config.Save();
-            labelTotalTime.Text = Config.GetTimeString(_config.TotalTime);
+            this.timer.Stop();
+            this.config.Save();
+            this.labelTotalTime.Text = Config.GetTimeString(this.config.TotalTime);
 
-            buttonStart.Enabled = true;
-            buttonStop.Enabled = false;
+            this.buttonStart.Enabled = true;
+            this.buttonStop.Enabled = false;
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            _timer.Stop();
+            this.timer.Stop();
         }
     }
 }

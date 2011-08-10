@@ -1,56 +1,60 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text.RegularExpressions;
-
-namespace uppTimer
+﻿namespace uppTimer
 {
-    class Config
-    {
-        public string TimerName { get; set; }
-        public TimeSpan TotalTime { get; set; }
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Text;
+    using System.Text.RegularExpressions;
 
+    internal class Config
+    {
         private const string ConfigName = @"uppTimer.cfg";
 
-        internal void ParseConfig(string config)
+        public string TimerName { get; set; }
+
+        public TimeSpan TotalTime { get; set; }
+
+        public static string GetTimeString(TimeSpan timeSpan, bool withSeconds = false)
         {
-            TimerName = config.Split('=')[0].Trim();
-
-            var timeConfig = config.Split('=')[1].Trim();
-
-            var regexHours = new Regex(@"(\d+)h");
-            var hours = TimeSpan.FromHours(regexHours.IsMatch(timeConfig)
-                        ? double.Parse(regexHours.Match(timeConfig).Groups[1].Value)
-                        : 0);
-
-            var regexMinutes = new Regex(@"(\d+)m");
-            var minutes = TimeSpan.FromMinutes(regexMinutes.IsMatch(timeConfig)
-                          ? double.Parse(regexMinutes.Match(timeConfig).Groups[1].Value)
-                          : 0);
-
-            TotalTime = hours + minutes;
+            return string.Format(
+                "{0}:{1:00}:{2:00}", Math.Floor(timeSpan.TotalHours), timeSpan.Minutes, timeSpan.Seconds);
         }
 
         public void Load()
         {
             if (!File.Exists(ConfigName))
             {
-                File.WriteAllText(ConfigName, @"Timer = 0m", System.Text.Encoding.UTF8);
+                File.WriteAllText(ConfigName, @"Timer = 0m", Encoding.UTF8);
             }
 
-            ParseConfig(File.ReadAllText(ConfigName));
+            this.ParseConfig(File.ReadAllText(ConfigName));
         }
 
         public void Save()
         {
-            File.WriteAllText(ConfigName, string.Format("{0} = {1}", TimerName, GetTimeStringOld(TotalTime)), System.Text.Encoding.UTF8);
+            File.WriteAllText(
+                ConfigName, string.Format("{0} = {1}", this.TimerName, GetTimeStringOld(this.TotalTime)), Encoding.UTF8);
         }
 
-        public static string GetTimeString(TimeSpan timeSpan, bool withSeconds = false)
+        internal void ParseConfig(string config)
         {
-            return string.Format("{0}:{1:00}:{2:00}", Math.Floor(timeSpan.TotalHours), timeSpan.Minutes, timeSpan.Seconds);
+            this.TimerName = config.Split('=')[0].Trim();
+
+            var timeConfig = config.Split('=')[1].Trim();
+
+            var regexHours = new Regex(@"(\d+)h");
+            var hours =
+                TimeSpan.FromHours(
+                    regexHours.IsMatch(timeConfig) ? double.Parse(regexHours.Match(timeConfig).Groups[1].Value) : 0);
+
+            var regexMinutes = new Regex(@"(\d+)m");
+            var minutes =
+                TimeSpan.FromMinutes(
+                    regexMinutes.IsMatch(timeConfig) ? double.Parse(regexMinutes.Match(timeConfig).Groups[1].Value) : 0);
+
+            this.TotalTime = hours + minutes;
         }
-        
+
         private static string GetTimeStringOld(TimeSpan timeSpan, bool withSeconds = false)
         {
             var items = new List<string>();
@@ -59,7 +63,10 @@ namespace uppTimer
             var minutes = string.Format("{0}m", timeSpan.Minutes);
             var seconds = string.Format("{0}s", timeSpan.Seconds);
 
-            if (timeSpan.Hours != 0) items.Add(hours);
+            if (timeSpan.Hours != 0)
+            {
+                items.Add(hours);
+            }
 
             if (withSeconds)
             {
@@ -76,7 +83,10 @@ namespace uppTimer
                 else
                 {
                     items.Add(minutes);
-                    if (timeSpan.Seconds != 0) items.Add(seconds);
+                    if (timeSpan.Seconds != 0)
+                    {
+                        items.Add(seconds);
+                    }
                 }
             }
             else
