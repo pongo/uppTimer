@@ -39,6 +39,7 @@
         {
             this.elapsedTime += TimeSpan.FromSeconds(1);
 
+            // save every 60 seconds
             this.seconds++;
             if (this.seconds >= 60)
             {
@@ -81,6 +82,11 @@
 
         private void buttonStop_Click(object sender, EventArgs e)
         {
+            this.StopTimer();
+        }
+
+        private void StopTimer()
+        {
             this.timer.Stop();
             this.config.Save();
             this.labelTotalTime.Text = Config.GetTimeString(this.config.TotalTime);
@@ -91,7 +97,7 @@
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.timer.Stop();
+            this.StopTimer();
         }
     }
 }
