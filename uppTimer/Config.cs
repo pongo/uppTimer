@@ -61,11 +61,7 @@
 
         public string GetTotalTimeString()
         {
-            return string.Format(
-                "{0}:{1:00}:{2:00}",
-                Math.Floor(this.TotalTime.TotalHours),
-                this.TotalTime.Minutes,
-                this.TotalTime.Seconds);
+            return string.Format("{0}:{1:00}", Math.Floor(this.TotalTime.TotalHours), this.TotalTime.Minutes);
         }
 
         public void AddMinute()
