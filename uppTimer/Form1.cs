@@ -37,7 +37,7 @@
         {
             this.config.Load();
             this.Text = string.Format("{0}", this.config.TimerName);
-            this.labelTotalTime.Text = Config.GetTimeString(this.config.TotalTime);
+            this.labelTotalTime.Text = this.config.GetTotalTimeString();
         }
 
         private void Tick(object sender, EventArgs e)
@@ -48,13 +48,13 @@
             this.seconds++;
             if (this.seconds >= 60)
             {
-                this.config.TotalTime += TimeSpan.FromSeconds(60);
+                this.config.AddMinute();
                 this.config.Save();
                 this.seconds = 0;
             }
 
-            this.labelTime.Text = Config.GetTimeString(this.elapsedTime, true);
-            this.labelTotalTime.Text = Config.GetTimeString(this.config.TotalTime);
+            this.labelTime.Text = Config.GetTimeString(this.elapsedTime);
+            this.labelTotalTime.Text = this.config.GetTotalTimeString();
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
@@ -94,7 +94,7 @@
         {
             this.timer.Stop();
             this.config.Save();
-            this.labelTotalTime.Text = Config.GetTimeString(this.config.TotalTime);
+            this.labelTotalTime.Text = this.config.GetTotalTimeString();
             this.buttonStart.Text = @"Start";
             this.timerState = TimerState.Stopped;
             this.buttonStop.Enabled = false;
@@ -112,8 +112,7 @@
             if (editConfigForm.Save)
             {
                 this.config.TimerName = editConfigForm.TimerName;
-                this.config.TotalTime = TimeSpan.FromHours(editConfigForm.Hours)
-                                        + TimeSpan.FromMinutes(editConfigForm.Minutes);
+                this.config.SetTotalTime(editConfigForm.Hours, editConfigForm.Minutes);
                 this.config.Save();
                 this.LoadConfig();
             }

@@ -44,8 +44,8 @@
         private void EditConfigForm_Load(object sender, EventArgs e)
         {
             textBoxTimeName.Text = this.Config.TimerName;
-            numericUpDownHours.Value = (int)Math.Floor(this.Config.TotalTime.TotalHours);
-            numericUpDownMinutes.Value = this.Config.TotalTime.Minutes;
+            numericUpDownHours.Value = this.Config.Hours;
+            numericUpDownMinutes.Value = this.Config.Minutes;
         }
     }
 }

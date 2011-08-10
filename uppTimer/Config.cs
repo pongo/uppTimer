@@ -18,9 +18,26 @@
         }
 
         public string TimerName { get; set; }
-        public TimeSpan TotalTime { get; set; }
-        
-        public static string GetTimeString(TimeSpan timeSpan, bool withSeconds = false)
+
+        public int Hours
+        {
+            get
+            {
+                return (int)Math.Floor(this.TotalTime.TotalHours);
+            }
+        }
+
+        public int Minutes
+        {
+            get
+            {
+                return this.TotalTime.Minutes;
+            }
+        }
+
+        private TimeSpan TotalTime { get; set; }
+
+        public static string GetTimeString(TimeSpan timeSpan)
         {
             return string.Format(
                 "{0}:{1:00}:{2:00}", Math.Floor(timeSpan.TotalHours), timeSpan.Minutes, timeSpan.Seconds);
@@ -42,23 +59,23 @@
                 this.configName, string.Format("{0} = {1}", this.TimerName, GetTimeStringOld(this.TotalTime)), Encoding.UTF8);
         }
 
-        internal void ParseConfig(string config)
+        public string GetTotalTimeString()
         {
-            this.TimerName = config.Split('=')[0].Trim();
+            return string.Format(
+                "{0}:{1:00}:{2:00}",
+                Math.Floor(this.TotalTime.TotalHours),
+                this.TotalTime.Minutes,
+                this.TotalTime.Seconds);
+        }
 
-            var timeConfig = config.Split('=')[1].Trim();
+        public void AddMinute()
+        {
+            this.TotalTime += TimeSpan.FromSeconds(60);
+        }
 
-            var regexHours = new Regex(@"(\d+)h");
-            var hours =
-                TimeSpan.FromHours(
-                    regexHours.IsMatch(timeConfig) ? double.Parse(regexHours.Match(timeConfig).Groups[1].Value) : 0);
-
-            var regexMinutes = new Regex(@"(\d+)m");
-            var minutes =
-                TimeSpan.FromMinutes(
-                    regexMinutes.IsMatch(timeConfig) ? double.Parse(regexMinutes.Match(timeConfig).Groups[1].Value) : 0);
-
-            this.TotalTime = hours + minutes;
+        public void SetTotalTime(int hours, int minutes)
+        {
+            this.TotalTime = TimeSpan.FromHours(hours) + TimeSpan.FromMinutes(minutes);
         }
 
         private static string GetTimeStringOld(TimeSpan timeSpan, bool withSeconds = false)
@@ -101,6 +118,25 @@
             }
 
             return string.Join(" ", items);
+        }
+
+        private void ParseConfig(string config)
+        {
+            this.TimerName = config.Split('=')[0].Trim();
+
+            var timeConfig = config.Split('=')[1].Trim();
+
+            var regexHours = new Regex(@"(\d+)h");
+            var hours =
+                TimeSpan.FromHours(
+                    regexHours.IsMatch(timeConfig) ? double.Parse(regexHours.Match(timeConfig).Groups[1].Value) : 0);
+
+            var regexMinutes = new Regex(@"(\d+)m");
+            var minutes =
+                TimeSpan.FromMinutes(
+                    regexMinutes.IsMatch(timeConfig) ? double.Parse(regexMinutes.Match(timeConfig).Groups[1].Value) : 0);
+
+            this.TotalTime = hours + minutes;
         }
     }
 }
