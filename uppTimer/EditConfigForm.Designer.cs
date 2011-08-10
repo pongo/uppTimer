@@ -54,7 +54,7 @@
             this.textBoxTimeName.Location = new System.Drawing.Point(81, 10);
             this.textBoxTimeName.Name = "textBoxTimeName";
             this.textBoxTimeName.Size = new System.Drawing.Size(236, 20);
-            this.textBoxTimeName.TabIndex = 1;
+            this.textBoxTimeName.TabIndex = 2;
             // 
             // label2
             // 
@@ -77,7 +77,7 @@
             this.numericUpDownMinutes.Location = new System.Drawing.Point(227, 33);
             this.numericUpDownMinutes.Name = "numericUpDownMinutes";
             this.numericUpDownMinutes.Size = new System.Drawing.Size(90, 20);
-            this.numericUpDownMinutes.TabIndex = 5;
+            this.numericUpDownMinutes.TabIndex = 4;
             // 
             // label3
             // 
@@ -90,30 +90,32 @@
             // 
             // buttonSaveAndClose
             // 
-            this.buttonSaveAndClose.Location = new System.Drawing.Point(215, 73);
+            this.buttonSaveAndClose.Location = new System.Drawing.Point(81, 69);
             this.buttonSaveAndClose.Name = "buttonSaveAndClose";
             this.buttonSaveAndClose.Size = new System.Drawing.Size(101, 23);
-            this.buttonSaveAndClose.TabIndex = 7;
+            this.buttonSaveAndClose.TabIndex = 5;
             this.buttonSaveAndClose.Text = "Save and close";
             this.buttonSaveAndClose.UseVisualStyleBackColor = true;
             this.buttonSaveAndClose.Click += new System.EventHandler(this.buttonSaveAndClose_Click);
             // 
             // buttonCloseWithoutSaving
             // 
-            this.buttonCloseWithoutSaving.Location = new System.Drawing.Point(81, 73);
+            this.buttonCloseWithoutSaving.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonCloseWithoutSaving.Location = new System.Drawing.Point(188, 69);
             this.buttonCloseWithoutSaving.Name = "buttonCloseWithoutSaving";
             this.buttonCloseWithoutSaving.Size = new System.Drawing.Size(129, 23);
-            this.buttonCloseWithoutSaving.TabIndex = 8;
+            this.buttonCloseWithoutSaving.TabIndex = 1;
             this.buttonCloseWithoutSaving.Text = "Close without saving";
             this.buttonCloseWithoutSaving.UseVisualStyleBackColor = true;
             this.buttonCloseWithoutSaving.Click += new System.EventHandler(this.buttonCloseWithoutSaving_Click);
             // 
             // EditConfigForm
             // 
+            this.AcceptButton = this.buttonSaveAndClose;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(328, 108);
-            this.ControlBox = false;
+            this.CancelButton = this.buttonCloseWithoutSaving;
+            this.ClientSize = new System.Drawing.Size(329, 104);
             this.Controls.Add(this.buttonCloseWithoutSaving);
             this.Controls.Add(this.buttonSaveAndClose);
             this.Controls.Add(this.numericUpDownMinutes);
@@ -123,6 +125,8 @@
             this.Controls.Add(this.textBoxTimeName);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "EditConfigForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

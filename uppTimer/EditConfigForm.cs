@@ -11,13 +11,8 @@
 
             numericUpDownHours.Maximum = int.MaxValue;
             numericUpDownMinutes.Maximum = int.MaxValue;
-        }
 
-        public EditConfigForm(string timerName, int hours, int minutes)
-        {
-            this.TimerName = timerName;
-            this.Hours = hours;
-            this.Minutes = minutes;
+            this.Save = false;
         }
 
         public Config Config { get; set; }
