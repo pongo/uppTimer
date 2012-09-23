@@ -1,7 +1,11 @@
+Mirrors: [GitHub](https://github.com/pongo/uppTimer), [Bitbucket](https://bitbucket.org/pongo2/upptimer).
+
 uppTimer
 ========
 
 uppTimer - a simple stopwatch. Also it is able to keep the total time for all sessions.
+
+[Download](https://github.com/downloads/pongo/uppTimer/Release.zip).
 
 ![uppTimer](https://raw.github.com/pongo/uppTimer/master/upptimer.png)
 
@@ -23,6 +27,8 @@ uppTimer
 ========
 
 uppTimer - это простой секундомер. Кроме того, он умеет хранить общее время всех сессий.
+
+[Скачать](https://github.com/downloads/pongo/uppTimer/Release.zip).
 
 ![uppTimer](https://raw.github.com/pongo/uppTimer/master/upptimer.png)
 
